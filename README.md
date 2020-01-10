@@ -32,7 +32,7 @@ To write an application using the SDK
 ```
   $apikey = '6A19EA2A706041A599375CC95FF08809';
   $password = 'Demo123456';
-  $mode = 'sandbox'; // 'live' for production
+  $mode = 'sandbox'; // 'production' 
 ```
 
 - Initialized XentePayment class with authentication credential above
@@ -61,11 +61,11 @@ To write an application using the SDK
 - Create a transaction with the above transaction request
 
 ```
-  $transactionProcessingResponse = $xentePaymentGateway
+ $transactionProcessingResponse = $xentePaymentGateway
                                   ->transactions
                                   ->createTransaction($transactionRequest);
-
-  print_r($transactionProcessingResponse);
+ 
+ print_r($transactionProcessingResponse);
 
 ```
 
@@ -74,20 +74,26 @@ To write an application using the SDK
 ```
 $transactionId = '9F38AB020C394EA5BC642C25A5CB16BF-256784378515';
 
-$transactionDetailsResponse = xentePaymentGateway
-                              ->transactions->getTransactionDetailsById($transactionId);
+$transactionDetailsResponse = $xentePaymentGateway
+                             ->transactions
+                             ->getTransactionDetailsById($transactionId);
+print_r($transactionDetailsResponse);
 
-print_r($transactionDetailsResponse)
+```
 
-});
-
+- Get Transaction Details using request ID
+```
+$transactionDetailsResponse2 = $xentePaymentGateway
+                                ->transactions
+                                ->getTransactionDetailsByRequestId("4a651febdb515cd6ba02b00ab3c6dd61");
+print_r($transactionDetailsResponse2);
 ```
 
 - Get Account Details by the Account ID
 
 ```
   $accountId = '256784378515';
-  $accountDetailsResponse = xenteGateway
+  $accountDetailsResponse = xentePaymentGateway
                             ->accounts
                             ->getAcountDetailsById($accountId);
 
@@ -97,11 +103,10 @@ print_r($transactionDetailsResponse)
 - List all Payment providers
 
 ```
-$paymentProvidersResponse = xenteGateway
+$paymentProvidersResponse = $xentePaymentGateway
                             ->paymentProviders
-                            ->getPaymentProviders();
-
-print_r(paymentProvidersResponse);
+                            ->getAllPaymentProviders();
+print_r($paymentProvidersResponse);
 
 ```
 
@@ -109,7 +114,7 @@ print_r(paymentProvidersResponse);
 
 - If you would like to contribute, please fork the repo and send in a pull request.
 
-### Refactory Team Xente
+### Refactory Team Xentes
 > 1. Olive Nakiyemba
 > 2. Kintu Declan Trevor
 > 3. Oketayot Julius Peter
