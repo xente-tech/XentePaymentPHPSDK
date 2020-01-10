@@ -41,7 +41,9 @@ To write an application using the SDK
   $xentePaymentGateway = new XentePayment($apikey, $password, $mode);
 ```
 
-- Create transaction request associative array, metadata is optional parameter
+- Create transaction request associative array, metadata is optional parameter, customerReference is the phone number
+which transaction is initiated on
+
 
 ```
   $transactionRequest = [
