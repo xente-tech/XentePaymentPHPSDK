@@ -1,0 +1,28 @@
+{
+  "name": "xente/xentepayment-php-sdk",
+  "description": "Official Xente Payment API wrapper for PHP",
+  "keywords": [
+    "payment",
+    "transaction",
+    "api",
+    "xente"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Xente Ltd Uganda",
+      "email": "support@xente.co",
+      "homepage": "https://xente.co"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "XentePaymentSDK\\": "lib/",
+      "XentePaymentTests\\": "tests/"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.4"
+  }
+}
