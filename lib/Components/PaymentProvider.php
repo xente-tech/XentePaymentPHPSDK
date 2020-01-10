@@ -20,8 +20,21 @@ class PaymentProvider
 
     public function getAllPaymentProviders()
     {
-        $paymentProvidersResponse = $this->_httpRequestClient
-                                         ->executePaymentProvidersRequest();
-        return $paymentProvidersResponse;
+        try
+        {
+            $paymentProvidersResponse = $this->_httpRequestClient
+                ->executePaymentProvidersRequest();
+            return [
+                'status' => 'success',
+                'data' => $paymentProvidersResponse['data']['collection']
+            ];
+        }
+        catch(Exception $ex)
+        {
+            return [
+                'status' => 'error',
+                'data' => $ex->getMessage()
+            ];
+        }
     }
 }

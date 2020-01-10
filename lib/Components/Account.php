@@ -17,9 +17,22 @@ class Account
 
     public function getAccountDetailsById($accountId)
     {
-        $accountDetailsResponse = $this->_httpRequestClient
-                                       ->executeAccountDetailsRequest($accountId);
-        return $accountDetailsResponse;
+        try
+        {
+            $accountDetailsResponse = $this->_httpRequestClient
+                ->executeAccountDetailsRequest($accountId);
+            return [
+                'status' => 'success',
+                'data' => $accountDetailsResponse
+            ];
+        }
+        catch(Exception $ex)
+        {
+            return [
+                'status' => 'error',
+                'data' => $ex->getMessage()
+            ];
+        }
     }
 }
 

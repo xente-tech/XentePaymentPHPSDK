@@ -60,7 +60,27 @@ class Transaction
         try
         {
             $transactionDetailsResponse = $this->_httpRequestClient
-                                               ->executeBearerTokeRequest($transactionId);
+                                               ->executeTransactionDetailsRequest($transactionId);
+            return [
+                'status' => 'success',
+                'data' => $transactionDetailsResponse
+            ];
+        }
+        catch(Exception $ex)
+        {
+            return [
+                'status' => 'error',
+                'data' => $ex->getMessage()
+            ];
+        }
+    }
+
+    public function getTransactionDetailsByRequestId($requestId)
+    {
+        try
+        {
+            $transactionDetailsResponse = $this->_httpRequestClient
+                ->executeTransactionDetailsRequest2($requestId);
             return [
                 'status' => 'success',
                 'data' => $transactionDetailsResponse

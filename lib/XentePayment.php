@@ -22,7 +22,7 @@ class XentePayment
         if (!$apiKey || !$password || !$mode)
         {
             throw new Exception('Please fill in your apikey, password and mode correctly!!');
-        } elseif ($mode != 'production' && mode != 'sandbox'){
+        } elseif ($mode != 'production' && $mode != 'sandbox'){
             throw new Exception('Mode must be production or sandbox!!');
         }else{
             // Initialize the private property
@@ -33,7 +33,7 @@ class XentePayment
             // Initialize the components by passing $authCredential in the constructor
             $this->transactions = new Transaction($this->_authCredential);
             $this->accounts = new Account($this->_authCredential);
-            $this->paymentProviders = new Account($this->_authCredential);
+            $this->paymentProviders = new PaymentProvider($this->_authCredential);
         }
     }
 }
